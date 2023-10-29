@@ -9,7 +9,11 @@ module.exports = {
     min: 0,
     acquire: 30000,
     idle: 10000
+  },
+  dialectOptions: {
+    ssl: {
+      require: true,
+      // Puedes agregar más opciones SSL aquí si es necesario
+    }
   }
 };
-
-
