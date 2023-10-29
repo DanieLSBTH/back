@@ -1,8 +1,8 @@
 module.exports = {
-  HOST: "dpg-ckv9igramefc73duvpq0-a.oregon-postgres.render.com",
-  USER: "farmacia_prueba_user",
-  PASSWORD: "H0ysgUHbtsLyUKu62IGJT2q8oYMyPKBH",
-  DB: "farmacia_prueba",
+  HOST: "ep-quiet-math-78680175-pooler.us-east-1.postgres.vercel-storage.com",
+  USER: "default",
+  PASSWORD: "fTjywm5J3oZD",
+  DB: "verceldb",
   dialect: "postgres",
   ssl: true,
   pool: {
