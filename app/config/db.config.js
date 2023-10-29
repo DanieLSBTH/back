@@ -12,7 +12,10 @@ module.exports = {
   },
   dialectOptions: {
     ssl: {
-      require: true,
-    }
-  }
+      rejectUnauthorized: true,
+    },
+  },
+  define: {
+    timestamps: false,
+  },
 };
