@@ -1,5 +1,5 @@
 module.exports = {
-  HOST: "dpg-ckv9igramefc73duvpq0-a.oregon-postgres.render.com",
+  HOST: "dpg-ckv9igramefc73duvpq0-a.oregon-postgres.render.com?ssl=true",
   USER: "farmacia_prueba_user",
   PASSWORD: "H0ysgUHbtsLyUKu62IGJT2q8oYMyPKBH",
   DB: "farmacia_prueba",
@@ -9,13 +9,5 @@ module.exports = {
     min: 0,
     acquire: 30000,
     idle: 10000
-  },
-  dialectOptions: {
-    ssl: {
-      rejectUnauthorized: true,
-    },
-  },
-  define: {
-    timestamps: false,
   },
 };
