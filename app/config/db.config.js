@@ -1,8 +1,8 @@
 module.exports = {
-  HOST: "dpg-ckrfeqm2eoec73ffjql0-a.oregon-postgres.render.com",
-  USER: "umg_antigua_user",
-  PASSWORD: "U6mQANExZDR0XSp5fsB5LG7m14Ldz2o6",
-  DB: "umg_antigua",
+  HOST: "ep-quiet-math-78680175.us-east-1.postgres.vercel-storage.com",
+  USER: "default",
+  PASSWORD: "fTjywm5J3oZD",
+  DB: "verceldb",
   dialect: "postgres",
   pool: {
     max: 5,
