@@ -1,5 +1,5 @@
 module.exports = {
-  HOST: "dpg-ckv9igramefc73duvpq0-a.oregon-postgres.render.com?ssl=true",
+  HOST: "dpg-ckv9igramefc73duvpq0-a.oregon-postgres.render.com",
   USER: "farmacia_prueba_user",
   PASSWORD: "H0ysgUHbtsLyUKu62IGJT2q8oYMyPKBH",
   DB: "farmacia_prueba",
