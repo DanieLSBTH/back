@@ -1,10 +1,14 @@
 module.exports = {
-  HOST: "roundhouse.proxy.rlwy.net",
-  USER: "postgres",
-  PASSWORD: "acfddgfb4*3CEeegaDd4Dc-fgg1cAd3C",
-  DB: "railway",
+  HOST: "dpg-ckv9igramefc73duvpq0-a.oregon-postgres.render.com",
+  USER: "farmacia_prueba_user",
+  PASSWORD: "H0ysgUHbtsLyUKu62IGJT2q8oYMyPKBH",
+  DB: "farmacia_prueba",
   dialect: "postgres",
-  ssl: true,
+  dialectOptions: {
+    ssl: {
+    rejectUnauthorized: true,
+    }
+    },
   pool: {
     max: 5,
     min: 0,
