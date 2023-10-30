@@ -1,8 +1,8 @@
 module.exports = {
-  HOST: "ep-quiet-math-78680175-pooler.us-east-1.postgres.vercel-storage.com",
-  USER: "default",
-  PASSWORD: "fTjywm5J3oZD",
-  DB: "verceldb",
+  HOST: "roundhouse.proxy.rlwy.net",
+  USER: "postgres",
+  PASSWORD: "acfddgfb4*3CEeegaDd4Dc-fgg1cAd3C",
+  DB: "railway",
   dialect: "postgres",
   ssl: true,
   pool: {
