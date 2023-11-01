@@ -1,8 +1,8 @@
 const express = require("express");
-
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const multer = require("multer");
+const sharp = require("sharp");
 const fs = require("fs");
 const app = express();
 
@@ -27,14 +27,16 @@ db.sequelize.sync()
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
   });
-// Configura Multer
+
+  // Configura Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/uploads"); // Establece la carpeta de destino para las imágenes
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname); // Usa el nombre original del archivo
-  },
+    const ext = file.originalname.split('.').pop() // todo: imagen.png ->png
+    cb(null, `${Date.now()}.${ext}`)
+  }
 });
 
 const upload = multer({ storage: storage });
@@ -48,10 +50,8 @@ if (!fs.existsSync(uploadDir)) {
 }
 
 // Define tus rutas y usa upload.single() para procesar archivos
-app.post("/api/producto/upload", upload.single("imagen"), (req, res) => {
-  // Accede al archivo cargado como req.file
-  // Procesa el archivo, guárdalo o almacena la ruta en la base de datos
-  // Añade tu lógica aquí
+app.post("/api/producto/", upload.single("imagen"), (req, res) => {
+
 });
 
 
