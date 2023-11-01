@@ -2,12 +2,33 @@ const db = require("../models");
 const Producto = db.producto;
 const Proveedor = db.proveedor;
 const Op = db.Sequelize.Op;
+const multer = require("multer"); // Asegúrate de importar multer
 
-// Crear y Guardar un Nuevo Producto
+// Configura Multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/uploads"); // Establece la carpeta de destino para las imágenes
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname); // Usa el nombre original del archivo
+  },
+});
+
+const upload = multer({ storage: storage });
+
+// Crear y Guardar un Nuevo Producto con Imagen
 exports.create = (req, res) => {
-  if (!req.body.producto || !req.body.descripcion || !req.body.precio_compra || !req.body.precio_venta || !req.body.stock || !req.body.imagen || !req.body.categoria || !req.body.id_proveedor) {
+  if (
+    !req.body.producto ||
+    !req.body.descripcion ||
+    !req.body.precio_compra ||
+    !req.body.precio_venta ||
+    !req.body.stock ||
+    !req.body.categoria ||
+    !req.body.id_proveedor
+  ) {
     res.status(400).send({
-      message: "All fields are required!"
+      message: "All fields are required!",
     });
     return;
   }
@@ -18,21 +39,26 @@ exports.create = (req, res) => {
     precio_compra: req.body.precio_compra,
     precio_venta: req.body.precio_venta,
     stock: req.body.stock,
-    imagen: req.body.imagen, // Ruta o nombre de la imagen
     categoria: req.body.categoria,
-    id_proveedor: req.body.id_proveedor
+    id_proveedor: req.body.id_proveedor,
   };
 
+  if (req.file) {
+    producto.imagen = req.file.originalname; // Asigna el nombre del archivo de imagen
+  }
+
   Producto.create(producto)
-    .then(data => {
+    .then((data) => {
       res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the Producto."
+        message: err.message || "Some error occurred while creating the Producto.",
       });
     });
 };
+
+// Resto del controlador (métodos findAll, findOne, update, delete, etc.) sin cambios
 
 // Recuperar todos los Productos de la base de datos.
 exports.findAll = (req, res) => {

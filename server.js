@@ -28,32 +28,6 @@ db.sequelize.sync()
     console.log("Failed to sync db: " + err.message);
   });
 
-  // Configura Multer
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/uploads"); // Establece la carpeta de destino para las imágenes
-  },
-  filename: (req, file, cb) => {
-    const ext = file.originalname.split('.').pop() // todo: imagen.png ->png
-    cb(null, `${Date.now()}.${ext}`)
-  }
-});
-
-const upload = multer({ storage: storage });
-
-// ...
-
-// Verifica si el directorio de destino existe, si no, créalo
-const uploadDir = "public/uploads";
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-// Define tus rutas y usa upload.single() para procesar archivos
-app.post("/api/producto/", upload.single("imagen"), (req, res) => {
-
-});
-
 
 // // drop the table if it already exists
 // db.sequelize.sync({ force: true }).then(() => {
