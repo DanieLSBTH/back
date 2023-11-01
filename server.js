@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // Configure Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/uploads"); // Establece la carpeta de destino para las imágenes
+    cb(null, 'public/uploads'); // Establece la carpeta de destino para las imágenes
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname); // Usa el nombre original del archivo
