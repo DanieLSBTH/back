@@ -48,7 +48,7 @@ if (!fs.existsSync(uploadDir)) {
 }
 
 // Define tus rutas y usa upload.single() para procesar archivos
-app.post("/upload", upload.single("imagen"), (req, res) => {
+app.post("/api/producto/upload", upload.single("imagen"), (req, res) => {
   // Accede al archivo cargado como req.file
   // Procesa el archivo, guárdalo o almacena la ruta en la base de datos
   // Añade tu lógica aquí
