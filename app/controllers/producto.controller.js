@@ -5,9 +5,12 @@ const Op = db.Sequelize.Op;
 const multer = require("multer"); // Asegúrate de importar multer
 
 
-
+const upload = multer({
+  storage: multer.memoryStorage(), // Almacenar la imagen en la memoria como un buffer
+  limits: { fileSize: 1024 * 1024 * 5 }, // Límite de tamaño de archivo (5 MB)
+});
 // Crear y Guardar un Nuevo Producto con Imagen
-exports.create = (req, res) => {
+exports.create = [upload.single('imagen'), (req, res) => {
   if (
     !req.body.producto ||
     !req.body.descripcion ||
@@ -46,8 +49,7 @@ exports.create = (req, res) => {
         message: err.message || "Some error occurred while creating the Producto.",
       });
     });
-};
-
+}];
 
 // Resto del controlador (métodos findAll, findOne, update, delete, etc.) sin cambios
 
