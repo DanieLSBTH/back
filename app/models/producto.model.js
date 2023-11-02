@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER
       },
       imagen: {
-        type: Sequelize.STRING // Puedes almacenar la ruta o el nombre del archivo de la imagen
+        type: Sequelize.BLOB // Puedes almacenar la ruta o el nombre del archivo de la imagen
       },
       categoria: {
         type: Sequelize.STRING
