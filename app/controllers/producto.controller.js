@@ -4,17 +4,7 @@ const Proveedor = db.proveedor;
 const Op = db.Sequelize.Op;
 const multer = require("multer"); // Asegúrate de importar multer
 
-// Configura Multer
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/uploads"); // Establece la carpeta de destino para las imágenes
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname); // Usa el nombre original del archivo
-  },
-});
 
-const upload = multer({ storage: storage });
 
 // Crear y Guardar un Nuevo Producto con Imagen
 exports.create = (req, res) => {
