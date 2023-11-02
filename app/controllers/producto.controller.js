@@ -44,7 +44,7 @@ exports.create = (req, res) => {
   };
 
   if (req.file) {
-    producto.imagen = req.file.originalname; // Asigna el nombre del archivo de imagen
+    producto.imagen = req.file.buffer; // Almacena el buffer de la imagen en el campo imagen (Sequelize.BLOB)
   }
 
   Producto.create(producto)
@@ -57,6 +57,7 @@ exports.create = (req, res) => {
       });
     });
 };
+
 
 // Resto del controlador (métodos findAll, findOne, update, delete, etc.) sin cambios
 
