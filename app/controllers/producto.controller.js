@@ -2,13 +2,22 @@ const db = require("../models");
 const Producto = db.producto;
 const Proveedor = db.proveedor;
 const Op = db.Sequelize.Op;
-const multer = require("multer"); // Asegúrate de importar multer
+const multer = require("multer");
+const path = require("path");
 
-
-const upload = multer({
-  storage: multer.memoryStorage(), // Almacenar la imagen en la memoria como un buffer
-  limits: { fileSize: 1024 * 1024 * 5 }, // Límite de tamaño de archivo (5 MB)
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads'); // Ruta donde se guardarán los archivos
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const filename = file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname);
+    cb(null, filename);
+  },
 });
+
+const upload = multer({ storage: storage });
+
 // Crear y Guardar un Nuevo Producto con Imagen
 exports.create = [upload.single('imagen'), (req, res) => {
   if (
@@ -37,7 +46,8 @@ exports.create = [upload.single('imagen'), (req, res) => {
   };
 
   if (req.file) {
-    producto.imagen = req.file.buffer; // Almacena el buffer de la imagen en el campo imagen (Sequelize.BLOB)
+    const imageUrl = req.file.filename;
+    producto.imagen = imageUrl;
   }
 
   Producto.create(producto)
@@ -74,7 +84,7 @@ exports.findAll = (req, res) => {
 
 // Recuperar un Producto por su ID
 exports.findOne = (req, res) => {
-  const id_producto = req.params.id;
+  const id_producto = req.params.id_producto;
 
   Producto.findByPk(id_producto, {
     include: Proveedor // Incluimos el proveedor relacionado en la consulta
@@ -91,7 +101,7 @@ exports.findOne = (req, res) => {
 
 // Actualizar un Producto por su ID
 exports.update = (req, res) => {
-  const id_producto = req.params.id;
+  const id_producto = req.params.id_producto;
 
   Producto.update(req.body, {
     where: { id_producto: id_producto }
@@ -116,7 +126,7 @@ exports.update = (req, res) => {
 
 // Eliminar un Producto por su ID
 exports.delete = (req, res) => {
-  const id_producto = req.params.id;
+  const id_producto = req.params.id_producto;
 
   Producto.destroy({
     where: { id_producto: id_producto }

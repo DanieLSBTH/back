@@ -9,13 +9,13 @@ router.post("/", proveedores.create);
 router.get("/", proveedores.findAll);
 
 // Recuperar un Proveedor por su ID
-router.get("/:id", proveedores.findOne);
+router.get("/:id_proveedor", proveedores.findOne);
 
 // Actualizar un Proveedor por su ID
-router.put("/:id", proveedores.update);
+router.put("/:id_proveedor", proveedores.update);
 
 // Eliminar un Proveedor por su ID
-router.delete("/:id", proveedores.delete);
+router.delete("/:id_proveedor", proveedores.delete);
 
 // Eliminar todos los Proveedores
 router.delete("/", proveedores.deleteAll);

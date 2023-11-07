@@ -9,13 +9,13 @@ module.exports = app =>{
     router.get("/", productos.findAll);
     
     // Recuperar un Producto por su ID
-    router.get("/:id", productos.findOne);
+    router.get("/:id_producto", productos.findOne);
     
     // Actualizar un Producto por su ID
-    router.put("/:id", productos.update);
+    router.put("/:id_producto", productos.update);
     
     // Eliminar un Producto por su ID
-    router.delete("/:id", productos.delete);
+    router.delete("/:id_producto", productos.delete);
     
     // Eliminar todos los Productos
     router.delete("/", productos.deleteAll);

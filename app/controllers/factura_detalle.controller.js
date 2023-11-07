@@ -6,7 +6,7 @@ const Op = Sequelize.Op;
 
 // Crear y guardar un nuevo registro en factura_detalle
 exports.create = (req, res) => {
-  const id_venta = req.body.id_venta;
+  const id_factura = req.body.id_factura;
   const id_producto = req.body.id_producto;
   const cantidad = req.body.cantidad;
 
@@ -24,7 +24,7 @@ exports.create = (req, res) => {
       } else {
         // Crear un registro en factura_detalle
         return FacturaDetalle.create({
-          id_venta: id_venta,
+          id_factura: id_factura,
           id_producto: id_producto,
           cantidad: cantidad,
           precio: producto.precio_venta,
@@ -79,13 +79,13 @@ exports.findAll = (req, res) => {
 
 // Recuperar un registro de factura_detalle por su ID
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const id_venta_detalle = req.params.id_venta_detalle;
 
-  FacturaDetalle.findByPk(id)
+  FacturaDetalle.findByPk(id_venta_detalle)
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `No se encontró el registro con id=${id}.`,
+          message: `No se encontró el registro con id=${id_venta_detalle}.`,
         });
       } else {
         res.send(data);
@@ -93,17 +93,17 @@ exports.findOne = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: `Error al recuperar el registro con id=${id}`,
+        message: `Error al recuperar el registro con id=${id_venta_detalle}`,
       });
     });
 };
 
 // Actualizar un registro de factura_detalle por su ID
 exports.update = (req, res) => {
-  const id = req.params.id;
+  const id_venta_detalle = req.params.id_venta_detalle;
 
   FacturaDetalle.update(req.body, {
-    where: { id: id },
+    where: { id_venta_detalle: id_venta_detalle},
   })
     .then((num) => {
       if (num == 1) {
@@ -112,23 +112,23 @@ exports.update = (req, res) => {
         });
       } else {
         res.send({
-          message: `No se puede actualizar el registro de factura_detalle con id=${id}.`,
+          message: `No se puede actualizar el registro de factura_detalle con id=${id_venta_detalle}.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: `Error al actualizar el registro de factura_detalle con id=${id}`,
+        message: `Error al actualizar el registro de factura_detalle con id=${id_venta_detalle}`,
       });
     });
 };
 
 // Eliminar un registro de factura_detalle por su ID
 exports.delete = (req, res) => {
-  const id = req.params.id;
+  const id_venta_detalle = req.params.id_venta_detalle;
 
   FacturaDetalle.destroy({
-    where: { id: id },
+    where: { id_venta_detalle: id_venta_detalle },
   })
     .then((num) => {
       if (num == 1) {
@@ -137,13 +137,13 @@ exports.delete = (req, res) => {
         });
       } else {
         res.send({
-          message: `No se puede eliminar el registro de factura_detalle con id=${id}.`,
+          message: `No se puede eliminar el registro de factura_detalle con id=${id_venta_detalle}.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: `Error al eliminar el registro de factura_detalle con id=${id}`,
+        message: `Error al eliminar el registro de factura_detalle con id=${id_venta_detalle}`,
       });
     });
 };

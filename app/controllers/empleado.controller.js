@@ -49,7 +49,7 @@ exports.findAll = (req, res) => {
 
 // Recuperar un Empleado por su ID
 exports.findOne = (req, res) => {
-  const id_empleado = req.params.id;
+  const id_empleado = req.params.id_empleado;
 
   Empleado.findByPk(id_empleado)
     .then(data => {
@@ -64,7 +64,7 @@ exports.findOne = (req, res) => {
 
 // Actualizar un Empleado por su ID
 exports.update = (req, res) => {
-  const id_empleado = req.params.id;
+  const id_empleado = req.params.id_empleado;
 
   Empleado.update(req.body, {
     where: { id_empleado: id_empleado }
@@ -89,7 +89,7 @@ exports.update = (req, res) => {
 
 // Eliminar un Empleado por su ID
 exports.delete = (req, res) => {
-  const id_empleado = req.params.id;
+  const id_empleado = req.params.id_empleado;
 
   Empleado.destroy({
     where: { id_empleado: id_empleado }

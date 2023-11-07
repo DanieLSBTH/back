@@ -1,8 +1,8 @@
 module.exports = {
-  HOST: "dpg-ckv9igramefc73duvpq0-a",
-  USER: "farmacia_prueba_user",
-  PASSWORD: "H0ysgUHbtsLyUKu62IGJT2q8oYMyPKBH",
-  DB: "farmacia_prueba",
+  HOST: "dpg-cl4tmodqkk8c73c1knp0-a",
+  USER: "farmacia_prueba_dq74_user",
+  PASSWORD: "G33HlVfdZujks9qY4fLkApynMylpDLGT",
+  DB: "farmacia_prueba_dq74",
   dialect: "postgres",
   dialectOptions: {
     ssl: {

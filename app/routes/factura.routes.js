@@ -9,13 +9,13 @@ module.exports = (app) => {
     router.get("/", facturas.findAll);
   
     // Recuperar una factura por su ID
-    router.get("/:id", facturas.findOne);
+    router.get("/:id_factura", facturas.findOne);
   
     // Actualizar una factura por su ID
-    router.put("/:id", facturas.update);
+    router.put("/:id_factura", facturas.update);
   
     // Eliminar una factura por su ID
-    router.delete("/:id", facturas.delete);
+    router.delete("/:id_factura", facturas.delete);
   
     app.use("/api/facturas", router);
   };

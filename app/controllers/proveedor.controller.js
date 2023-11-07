@@ -47,7 +47,7 @@ exports.findAll = (req, res) => {
 
 // Recuperar un Proveedor por su ID
 exports.findOne = (req, res) => {
-  const id_proveedor = req.params.id;
+  const id_proveedor = req.params.id_proveedor; 
 
   Proveedor.findByPk(id_proveedor)
     .then(data => {
@@ -62,7 +62,7 @@ exports.findOne = (req, res) => {
 
 // Actualizar un Proveedor por su ID
 exports.update = (req, res) => {
-  const id_proveedor = req.params.id;
+  const id_proveedor = req.params.id_proveedor;
 
   Proveedor.update(req.body, {
     where: { id_proveedor: id_proveedor }
@@ -87,7 +87,7 @@ exports.update = (req, res) => {
 
 // Eliminar un Proveedor por su ID
 exports.delete = (req, res) => {
-  const id_proveedor = req.params.id;
+  const id_proveedor = req.params.id_proveedor;
 
   Proveedor.destroy({
     where: { id_proveedor: id_proveedor }

@@ -10,13 +10,13 @@ router.post("/", empleados.create);
 router.get("/", empleados.findAll);
 
 // Recuperar un Empleado por su ID
-router.get("/:id", empleados.findOne);
+router.get("/:id_empleado", empleados.findOne);
 
 // Actualizar un Empleado por su ID
-router.put("/:id", empleados.update);
+router.put("/:id_empleado", empleados.update);
 
 // Eliminar un Empleado por su ID
-router.delete("/:id", empleados.delete);
+router.delete("/:id_empleado", empleados.delete);
 
 // Eliminar todos los Empleados
 router.delete("/", empleados.deleteAll);

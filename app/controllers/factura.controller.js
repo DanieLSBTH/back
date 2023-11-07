@@ -37,12 +37,27 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   Factura.findAll({
     include: [
-      { model: Cliente, as: "clientes" },
-      { model: Empleado, as: "empleados" }
+      { 
+        model: Cliente, 
+        as: "clientes", 
+        attributes: ["id_cliente", "nombre"] 
+      },
+      { 
+        model: Empleado, 
+        as: "empleados", 
+        attributes: ["id_empleado", "nombre"] 
+      }
     ]
   })
     .then(data => {
-      res.send(data);
+      const modifiedData = data.map(item => ({
+        id_factura: item.id_factura,
+        fecha: item.fecha,
+        no_factura: item.no_factura,
+        id_cliente: item.clientes.nombre,
+        id_empleado: item.empleados.nombre // Cambia el ID del empleado por su nombre
+      }));
+      res.send(modifiedData);
     })
     .catch(err => {
       res.status(500).send({
@@ -51,9 +66,11 @@ exports.findAll = (req, res) => {
     });
 };
 
+
+
 // Recuperar una factura por su ID
 exports.findOne = (req, res) => {
-  const id_factura = req.params.id;
+  const id_factura = req.params.id_factura;
 
   Factura.findByPk(id_factura, {
     include: [
@@ -73,7 +90,7 @@ exports.findOne = (req, res) => {
 
 // Actualizar una factura por su ID
 exports.update = (req, res) => {
-  const id_factura = req.params.id;
+  const id_factura = req.params.id_factura;
 
   Factura.update(req.body, {
     where: { id_factura: id_factura }
@@ -98,7 +115,7 @@ exports.update = (req, res) => {
 
 // Eliminar una factura por su ID
 exports.delete = (req, res) => {
-  const id_factura = req.params.id;
+  const id_factura = req.params.id_factura;
 
   Factura.destroy({
     where: { id_factura: id_factura }

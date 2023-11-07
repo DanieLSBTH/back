@@ -10,13 +10,13 @@ router.post("/", clientes.create);
 router.get("/", clientes.findAll);
 
 // Retrieve a single Cliente with id
-router.get("/:id", clientes.findOne);
+router.get("/:id_cliente", clientes.findOne);
 
 // Update a Cliente with id
-router.put("/:id", clientes.update);
+router.put("/:id_cliente", clientes.update);
 
 // Delete a Cliente with id
-router.delete("/:id", clientes.delete);
+router.delete("/:id_cliente", clientes.delete);
 
 // Delete all Clientes
 router.delete("/", clientes.deleteAll);

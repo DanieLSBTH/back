@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      id_venta: {
+      id_factura: {
         type: Sequelize.INTEGER,
       },
       id_producto: {
@@ -24,7 +24,7 @@ module.exports = (sequelize, Sequelize) => {
   
     // Definir la relación con la tabla de Factura
     FacturaDetalle.belongsTo(sequelize.models.factura, {
-      foreignKey: 'id_venta',
+      foreignKey: 'id_factura',
       as: 'facturas',
     });
   

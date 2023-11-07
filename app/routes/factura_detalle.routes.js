@@ -10,13 +10,13 @@ module.exports = (app) => {
     router.get('/', facturaDetalle.findAll);
   
     // Recuperar un registro de factura_detalle por su ID
-    router.get('/:id', facturaDetalle.findOne);
+    router.get('/:id_venta_detalle', facturaDetalle.findOne);
   
     // Actualizar un registro de factura_detalle por su ID
-    router.put('/:id', facturaDetalle.update);
+    router.put('/:id_venta_detalle', facturaDetalle.update);
   
     // Eliminar un registro de factura_detalle por su ID
-    router.delete('/:id', facturaDetalle.delete);
+    router.delete('/:id_venta_detalle', facturaDetalle.delete);
   
     // Eliminar todos los registros de factura_detalle
     router.delete('/', facturaDetalle.deleteAll);
